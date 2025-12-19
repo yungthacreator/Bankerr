@@ -575,9 +575,17 @@ const TestimonialsSection = () => {
   )
 }
 
+
 // Trust Section
 const TrustSection = () => {
-  const universities = ['Oxford', 'Imperial', 'UCL', 'Harvard', 'Cambridge', 'MIT']
+  const universities = [
+    { name: 'Oxford', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/ff/Oxford-University-Circlet.svg/200px-Oxford-University-Circlet.svg.png' },
+    { name: 'Imperial', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/Imperial_College_London_crest.svg/200px-Imperial_College_London_crest.svg.png' },
+    { name: 'UCL', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/University_College_London_logo.svg/200px-University_College_London_logo.svg.png' },
+    { name: 'Harvard', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/cc/Harvard_University_coat_of_arms.svg/200px-Harvard_University_coat_of_arms.svg.png' },
+    { name: 'Cambridge', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Coat_of_Arms_of_the_University_of_Cambridge.svg/200px-Coat_of_Arms_of_the_University_of_Cambridge.svg.png' },
+    { name: 'MIT', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/MIT_logo.svg/200px-MIT_logo.svg.png' },
+  ]
   
   return (
     <section className="py-16 bg-gray-900 text-white">
@@ -585,15 +593,20 @@ const TrustSection = () => {
         <p className="text-sm font-medium text-gray-400 uppercase tracking-wider mb-8">
           Trusted by people from
         </p>
-        <div className="flex flex-wrap justify-center gap-8 md:gap-12">
+        <div className="flex flex-wrap justify-center items-center gap-8 md:gap-12">
           {universities.map((uni) => (
-            <motion.span 
-              key={uni}
+            <motion.div 
+              key={uni.name}
               whileHover={{ scale: 1.1 }}
-              className="font-serif text-xl text-gray-400 hover:text-white transition-colors cursor-default"
+              className="flex flex-col items-center gap-2 cursor-default"
             >
-              {uni}
-            </motion.span>
+              <img 
+                src={uni.logo} 
+                alt={uni.name}
+                className="h-12 w-auto brightness-0 invert opacity-60 hover:opacity-100 transition-opacity"
+              />
+              <span className="text-xs text-gray-500">{uni.name}</span>
+            </motion.div>
           ))}
         </div>
       </div>
